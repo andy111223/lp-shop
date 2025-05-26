@@ -1,3 +1,32 @@
+.carousel-inner,
+.carousel-item {
+  height: 100vh;
+}
 
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHlsZS5jc3MifQ== */
+.carousel-caption {
+  right: auto;
+  bottom: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0;
+}
+
+/* =========  MOBILE TWEAKS  ========= */
+@media (max-width: 767px) {
+  section {
+    padding: 3rem 0;
+  }
+  .carousel-caption h3 {
+    font-size: 1.75rem;
+  }
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uL3Nhc3Mvc3R5bGUuc2NzcyIsInN0eWxlLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFDQTs7RUFDaUIsYUFBQTtBQ0NqQjs7QURDQTtFQUNFLFdBQUE7RUFDQSxZQUFBO0VBQ0Esb0JBQUE7S0FBQSxpQkFBQTtBQ0VGOztBREVBO0VBQ0UsV0FBQTtFQUNBLFlBQUE7RUFDQSxTQUFBO0VBQ0EsUUFBQTtFQUNBLGdDQUFBO0VBQ0EsVUFBQTtBQ0NGOztBREVBLHdDQUFBO0FBQ0E7RUFDRTtJQUFVLGVBQUE7RUNFVjtFRERBO0lBQXVCLGtCQUFBO0VDSXZCO0FBQ0YiLCJmaWxlIjoic3R5bGUuY3NzIn0= */
