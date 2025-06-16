@@ -1,25 +1,118 @@
+/* -------------------------------------------------------------
+   Golden – landing-page • custom SCSS
+   Kompiluj przez:  npm run watch  (lub  npm run build)
+----------------------------------------------------------------*/
+@use "sass:color";   /* ← DODANE  – ładuje moduł z funkcjami adjust/scale */
 
-.carousel-inner,
-.carousel-item { height: 100vh; }
+/*== 1. Design tokens ==*/
+$clr-primary: #fed136;
+$clr-dark:    #222;
+$clr-body:    #555;
+$clr-light:   #f8f9fa;
+$font-heading: "Montserrat", sans-serif;
+$font-body:    "Lato", sans-serif;
 
-.carousel-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+/*== 2. Reset / base ==*/
+html { scroll-behavior: smooth; }
+body {
+  font-family: $font-body;
+  font-size: 1rem;
+  color: $clr-body;
+  line-height: 1.6;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-family: $font-heading;
+  font-weight: 700;
+  color: $clr-dark;
+  line-height: 1.2;
+}
+a {
+  color: $clr-primary;
+  text-decoration: none;
+  transition: color .2s;
+  &:hover { color: color.adjust($clr-primary, $lightness:-7%); }
 }
 
+/*== 3. Utilities ==*/
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important; height: 1px !important;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+.text-light       { color: #fff; }
+.bg-light-section { background: $clr-light; }
+.bg-grey-light    { background: #eff2f5; }
 
-.carousel-caption {
-  right: auto;              
-  bottom: auto;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  padding: 0;
+/*== 4. Navbar ==*/
+.navbar {
+  padding: 1rem 0;
+  .brand { font-size: 1.75rem; font-weight: 700; color: $clr-primary; }
+  .menu  { list-style: none; margin: 0; display: flex; gap: 1.5rem;
+           li a { font-weight: 600; text-transform: uppercase; font-size: .875rem; } }
+}
+@media (max-width: 767px) {
+  .menu { flex-direction: column; align-items: center; margin-top: 1rem; }
 }
 
-/* =========  MOBILE TWEAKS  ========= */
-@media (max-width:767px) {
-  section { padding: 3rem 0; }
-  .carousel-caption h3 { font-size: 1.75rem; }
+/*== 5. Hero ==*/
+.hero {
+  background: url("https://picsum.photos/1920/1080?blur=2") center/cover no-repeat;
+  color: #fff; text-align: center; position: relative; padding: 8rem 0;
+  &::after { content:''; position: absolute; inset: 0; background: rgba(#000, .55); }
+  * { position: relative; z-index: 1; }
+
+  .tagline  { font-size: 1.25rem; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .75rem; }
+  .headline { font-size: 3rem; font-weight: 700; margin-bottom: 2rem; }
+  @media (min-width:768px) { .headline { font-size: 3.5rem; } }
+}
+
+/*== 6. Buttons ==*/
+.btn {
+  display: inline-block; padding: .9rem 2.2rem; font-weight: 600;
+  border-radius: 3rem; text-transform: uppercase; font-size: .875rem;
+  &.btn-yellow {
+    background: $clr-primary; color: #fff; border: none;
+    &:hover { background: color.adjust($clr-primary, $lightness:-7%); }
+  }
+}
+
+/*== 7. Section headings ==*/
+.section-title    { font-size: 2.25rem; margin-bottom: .25rem; }
+.section-subtitle { font-style: italic; margin-bottom: 3rem; color: $clr-body; }
+
+/*== 8. Services ==*/
+.service-box {
+  text-align: center;
+  h4 { margin: 1.25rem 0 .75rem; }
+  p  { max-width: 260px; margin-inline: auto; }
+  .icon-circle {
+    width: 100px; height: 100px; display: flex; align-items: center; justify-content: center;
+    margin-inline: auto; border: 3px solid $clr-primary; border-radius: 50%;
+    color: $clr-primary; font-size: 2rem;
+  }
+}
+
+/*== 9. Portfolio grid ==*/
+.portfolio-item {
+  position: relative; overflow: hidden; cursor: pointer;
+  img { width: 100%; display: block; transition: transform .4s ease; }
+  figcaption {
+    position: absolute; inset: 0; background: rgba($clr-primary, .9);
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    color: #fff; opacity: 0; transition: opacity .4s ease;
+    h5   { margin: 0 0 .25rem; font-size: 1.25rem; }
+    span { font-size: .875rem; text-transform: uppercase; letter-spacing: .05em; }
+  }
+  &:hover { img { transform: scale(1.05); } figcaption { opacity: 1; } }
+}
+
+/*== 10. Footer ==*/
+.page-footer {
+  background: $clr-dark; color: #fff; padding: 2.5rem 0;
+  .copyright { margin-bottom: 1rem; }
+  .social {
+    list-style: none; display: flex; justify-content: center; gap: 1.25rem; padding: 0; margin: 0;
+    li a { color: #fff; font-size: 1.25rem; transition: color .2s;
+      &:hover { color: $clr-primary; } }
+  }
 }
